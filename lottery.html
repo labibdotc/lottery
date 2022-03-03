@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>lottery</title>
+    </head>
+    <body>
+
+        <script type = "text/javascript">
+
+            document.write("The pick: ");
+            var arr = [];
+            
+            arr[0] = Math.floor(Math.random() * 48) + 1;
+            arr[1] = Math.floor(Math.random() * 48) + 1;
+            arr[2] = Math.floor(Math.random() * 48) + 1;
+            arr[3] = Math.floor(Math.random() * 48) + 1;
+            arr[4] = Math.floor(Math.random() * 48) + 1;
+            
+            let text = "";
+            for (let i = 0; i < arr.length; i++) { 
+                text += arr[i] + " ";
+            }
+            document.write(text);
+
+
+
+
+            document.write("<br/>The sorted pick: ");
+            arr.sort(function(a, b){return a - b});
+            let text2 = "";
+            for (let i = 0; i < arr.length; i++) { 
+                text2 += arr[i] + " ";
+            }
+            document.write(text2);
+            let luckyBall = Math.floor(Math.random() * 18) + 1;
+            
+            
+            document.write("<br/> LuckyBall: " + luckyBall);
+
+
+
+            var winArr = [12, 15, 24, 35, 48];
+            let matches = 0;
+            let gotLucky = 0;
+            if(luckyBall == 3) {
+                gotLucky = 1;
+                document.write("<br/>Got lucky with winning luckyball 3!!");
+            }
+            
+            for(let i = 0; i < arr.length; i++) {
+                if (arr[i] == winArr[i]) {
+                    matches++;
+                    document.write( "<br/>Winning number " + arr[i] + " matched!!");
+                }
+            }
+            document.write("<br/> Number of picks matched: " + matches);
+
+            if(gotLucky == 1) {
+                document.write("<br/>luckyball matched!");
+            } else {
+                document.write("<br/>luckyball didn't match :(");
+            }
+            document.write("<br/>Payout for this pick: ");
+            if (matches == 5 && gotLucky == 1) {
+                document.write("<br/> $7,000 a WEEK for LIFE");
+            } else if (matches == 5) {
+                document.write("<br/> $25,000 a YEAR for LIFE");
+            } else if (matches == 4 && gotLucky == 1) {
+                document.write("<br/> $5,000");
+            } else if (matches == 4) {
+                document.write("<br/> $200");
+            } else if (matches == 3 && gotLucky == 1) {
+                document.write("<br/> $150");
+            } else if (matches == 3) {
+                document.write("<br/> $20");
+            } else if (matches == 2 && gotLucky == 1) {
+                document.write("<br/> $25");
+            } else if (matches == 2) {
+                document.write("<br/> $3");
+            } else if (matches == 1 && gotLucky == 1) {
+                document.write("<br/> $6");
+            } else if (matches == 0 && gotLucky == 1) {
+                document.write("<br/> $4");
+            } else {
+                document.write("<br/> Nothing :(");
+            }
+
+        </script>
+    </body>
+</html>
